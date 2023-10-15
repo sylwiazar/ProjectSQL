@@ -16,6 +16,7 @@ The real estate office keeps a records of its clients - both landlords and peopl
 
 ### Assumptions:
 - An office employee cannot make an offer to rent a particular apartment earlier than 2 months before the rental start date.
+- Offer and contract entries are added chronologically. That is for offers there is a correlation between offer date and offer ID, for contracts there is a correlation between rental start date and contract ID.
 
 ### Example usage scenarios:
 - An office worker searches for rental housing listings available in a particular city for a client who wants to rent an apartment.

@@ -19,18 +19,16 @@ The real estate office keeps a records of its clients - both landlords and peopl
 - Offer and contract entries are added chronologically. That is for offers there is a correlation between offer date and offer ID, for contracts there is a correlation between rental start date and contract ID.
 
 ### Example usage scenarios:
-- An office worker searches for rental housing listings available in a particular city for a client who wants to rent an apartment.
-- The office worker searches for contracts coming to an end to offer the client a rental extension.
-- The office owner calculates a monthly commission X on all contracts for the month.
-- The office worker acquires a new client. The new client's data is recorded in the Person table.
-  - If the client is the owner of a rental apartment, the apartment data are entered in the Flat table.
-    - If for a given apartment the owner establishes a suitable offer for rent, the offer data are entered in the Offer table, respectively.
-  - If the customer is a tenant and decides to rent the apartment from a given offer, the contract data are entered in the Rent table.
-- The office worker updates the offer for the flat.
+- An office worker searches for [rental housing listings](https://github.com/sylwiazar/ProjectSQL/blob/main/List_of_flats_for_rent) available in a particular city for a client who wants to rent an apartment.
+- The office worker searches for [contracts coming to an end](https://github.com/sylwiazar/ProjectSQL/blob/main/Expiring_contracts) to offer the client a rental extension.
+- The office owner calculates a [monthly commission X](https://github.com/sylwiazar/ProjectSQL/blob/main/Monthly_commission) on all contracts for the month.
+- The office worker acquires a new client. The [new client's data](https://github.com/sylwiazar/ProjectSQL/blob/main/New_client) is recorded in the Person table.
+  - If the client is the owner of a rental apartment, the [apartment data](https://github.com/sylwiazar/ProjectSQL/blob/main/New_flat_for_rent) are entered in the Flat table.
+    - If for a given apartment the owner establishes a suitable [offer for rent](https://github.com/sylwiazar/ProjectSQL/blob/main/New_offer), the offer data are entered in the Offer table, respectively.
+  - If the customer is a tenant and decides to rent the apartment from a given offer, the [contract data](https://github.com/sylwiazar/ProjectSQL/blob/main/New_contract) are entered in the Rent table.
  
 ### ERD
 ![ERD](https://github.com/sylwiazar/ProjectSQL/assets/60239530/abb14e10-a1e1-4686-810c-47b47641c54e)
-
 
 ### Entity Set Description:
 

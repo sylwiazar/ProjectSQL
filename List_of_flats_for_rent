@@ -1,1 +1,28 @@
+/*An office worker searches for rental housing listings 
+available in a particular city for a client who wants to rent an apartment. */
 
+/* Check the newest offers only
+and available flats with no contracts 
+or contracts expiring in less than 2 months */
+
+SELECT Flat.addressFlat, Flat.rooms, Flat.area, 
+	CASE 
+		WHEN Flat.balcony = 1 THEN 'Yes'
+		ELSE 'No'
+	END AS balcony,
+	Offer.price,
+	CASE
+	WHEN Rent.dateExp IS NULL THEN CAST( GETDATE() as DATE)
+		ELSE CAST(Rent.dateExp as DATE)
+	END AS availabilityDate
+
+  FROM Flat
+  RIGHT JOIN Offer
+    ON Flat.flatId = Offer.flatId
+  LEFT JOIN Rent
+    ON Flat.flatId = Rent.flatId
+
+  WHERE Flat.availabilityRent = 1 AND Offer.newestOffer = 1
+	  AND (Rent.newestContract = 1 OR Rent.newestContract IS NULL )
+	  AND (DATEDIFF(DAY, GETDATE(), Rent.dateExp)<60 OR Rent.dateExp IS NULL)
+	  AND Flat.City = 'Poznań'

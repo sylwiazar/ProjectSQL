@@ -29,8 +29,8 @@ The real estate office keeps a records of its clients - both landlords and peopl
 - The office worker updates the offer for the flat.
  
 ### ERD
+![ERD](https://github.com/sylwiazar/ProjectSQL/assets/60239530/abb14e10-a1e1-4686-810c-47b47641c54e)
 
-![ERD](https://github.com/sylwiazar/ProjectSQL/assets/60239530/0c914753-cc39-44ae-b0cb-3cc9be061c92)
 
 ### Entity Set Description:
 

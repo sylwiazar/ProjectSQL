@@ -1,1 +1,17 @@
+/* The office worker acquires a new client. 
+The new client's data is recorded in the Person table. 
 
+Table schema:
+
+    CREATE TABLE Person (
+    	personId int IDENTITY (1,1) PRIMARY KEY,
+    	firstName varchar(20) NOT NULL,
+    	lastName varchar(40) NOT NULL,
+    	phoneNumber varchar(15) NOT NULL
+    	);
+
+*/
+
+INSERT INTO Person (FirstName, LastName, PhoneNumber)
+VALUES
+('John', 'Garner', '+48-559-803-248')

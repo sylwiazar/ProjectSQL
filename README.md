@@ -26,6 +26,7 @@ The real estate office keeps a records of its clients - both landlords and peopl
   - If the client is the owner of a rental apartment, the apartment data are entered in the Flat table.
     - If for a given apartment the owner establishes a suitable offer for rent, the offer data are entered in the Offer table, respectively.
   - If the customer is a tenant and decides to rent the apartment from a given offer, the contract data are entered in the Rent table.
+- The office worker updates the offer for the flat.
  
 ### ERD
 ![ERD](https://github.com/sylwiazar/ProjectSQL/assets/60239530/53704125-57db-4fa9-ba80-d30bc9515e84)
@@ -35,39 +36,41 @@ The real estate office keeps a records of its clients - both landlords and peopl
 | Person |
 | :---: |
 | It contains basic information about clients. A client can be an apartment owner, as well as a person who wants to rent an apartment. Entities are inserted into the collection when a client is reported to the real estate office, or is obtained by an employee of the office. The client's data is not removed from the collection, even if the client stops using the bureau's services. |
-| PersonId - int - Person ID |
-| FirstName	- varchar(20)	- Customer's name |
-| LastName	- varchar(40)	- Customer's last name |
-| PhoneNumber	- varchar(15)	- Contact number for the customer |
+| personId - int - Person ID |
+| firstName	- varchar(20)	- Customer's name |
+| lastName	- varchar(40)	- Customer's last name |
+| phoneNumber	- varchar(15)	- Contact number for the customer |
 
 | Flat |
 | :---: |
 | It contains basic information about apartments for rent. Entities are inserted into the collection when a client presents a desire to advertise his apartment for rent. The apartment data is not removed from the collection if the owner no longer wishes to rent it. |
-| FlatId - int - Unique apartment ID |
-| Address_flat - varchar(100) - The address at which the apartment is located |
-| Availability_rent - bit - Availability of the apartment for rent, the owner may decide to sell the apartment, in which case the attribute takes the value 0 |
-| Rooms - tinyint - Number of rooms available in the apartment |
-| Area - tinyint - Area of the apartment |
-| Balcony - bit	- Information about having a balcony in the apartment |
-| City - varchar(25) - The city in which the apartment is located |
-| OwnerId - int - The ID of the apartment owner |
+| flatId - int - Unique apartment ID |
+| addressFlat - varchar(100) - The address at which the apartment is located |
+| availabilityRent - bit - Availability of the apartment for rent, the owner may decide to sell the apartment, in which case the attribute takes the value 0 |
+| rooms - tinyint - Number of rooms available in the apartment |
+| area - tinyint - Area of the apartment |
+| balcony - bit	- Information about having a balcony in the apartment |
+| city - varchar(25) - The city in which the apartment is located |
+| ownerId - int - The ID of the apartment owner |
 
 | Offer |
 | :---: |
 | It contains information about proposed rental offers for a given apartment. Entities are inserted into the collection when a client decides to rent his apartment. Offers are not removed from the collection if the apartment is no longer available for rent. |
-| OfferId - int - OfferID |
-| Price - int - Rental price per month, the last offer before the rental date is the final offer for which the contract is concluded |
-| Offer_date - date - Date of issuance of the offer |
-| Flat_Id - int - The ID of the flat which offer describes |
+| offerId - int - OfferID |
+| price - int - Rental price per month, the last offer before the rental date is the final offer for which the contract is concluded |
+| offer_date - date - Date of issuance of the offer |
+| flat_Id - int - The ID of the flat which offer describes |
+| newestOffer - bit - It's 1 for the newest offer for the flat and 0 for the rest of the offers |
 
 | Rent |
 | :---: |
 | It contains basic information of the contract signed for renting an apartment. Entites are inserted into the collection when the customer decides to rent the apartment in question. Contract data is not deleted from the collection if its validity ends. |
-| ContractID - int - Unique contract ID |
-| Date_start - date - Rental start date |
-| Date_exp - date - End date of rental |
-| TenantID - int - ID of the person renting |
-| FlatID - int - ID of the apartment which is the object of the contract |
+| contractID - int - Unique contract ID |
+| dateStart - date - Rental start date |
+| dateExp - date - End date of rental |
+| tenantID - int - ID of the person renting |
+| flatID - int - ID of the apartment which is the object of the contract |
+| newestContract - bit - It's 1 for the newest contract for the flat and 0 for the rest of the contracts |
 
 ### Relationships Description:
 
@@ -82,5 +85,5 @@ The real estate office keeps a records of its clients - both landlords and peopl
 
 - Person(PersonId, FirstName, LastName, PhoneNumber)
 - Flat(FlatId, Address_flat, Availability_rent, Rooms, Area, Balcony, City, OwnerId REF Person)
-- Offer(OfferId, Price, Offer_date, FlatId REF Flat)
-- Rent(ContractId, Date_start, Date_exp, TenantId REF Person, FlatId REF Flat) 
+- Offer(OfferId, Price, Offer_date, newestOffert, FlatId REF Flat)
+- Rent(ContractId, Date_start, Date_exp, newestContract, TenantId REF Person, FlatId REF Flat) 

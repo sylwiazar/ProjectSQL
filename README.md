@@ -83,7 +83,7 @@ The real estate office keeps a records of its clients - both landlords and peopl
 
 ### Relational database schema:
 
-- Person(PersonId, FirstName, LastName, PhoneNumber)
-- Flat(FlatId, Address_flat, Availability_rent, Rooms, Area, Balcony, City, OwnerId REF Person)
-- Offer(OfferId, Price, Offer_date, newestOffert, FlatId REF Flat)
-- Rent(ContractId, Date_start, Date_exp, newestContract, TenantId REF Person, FlatId REF Flat) 
+- Person(personId, firstName, lastName, phoneNumber)
+- Flat(flatId, addressFlat, availabilityRent, rooms, area, balcony, city, ownerId REF Person)
+- Offer(offerId, price, offerDate, newestOffert, flatId REF Flat)
+- Rent(contractId, dateStart, dateExp, newestContract, tenantId REF Person, flatId REF Flat) 

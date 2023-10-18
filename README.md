@@ -56,7 +56,7 @@ The real estate office keeps a records of its clients - both landlords and peopl
 | :---: |
 | It contains information about proposed rental offers for a given apartment. Entities are inserted into the collection when a client decides to rent his apartment. Offers are not removed from the collection if the apartment is no longer available for rent. |
 | offerId - int - OfferID |
-| price - int - Rental price per month, the last offer before the rental date is the final offer for which the contract is concluded |
+| price - int - Rental price per month |
 | offer_date - date - Date of issuance of the offer |
 | flat_Id - int - The ID of the flat which offer describes |
 | newestOffer - bit - It's 1 for the newest offer for the flat and 0 for the rest of the offers |
@@ -85,4 +85,4 @@ The real estate office keeps a records of its clients - both landlords and peopl
 - Person(personId, firstName, lastName, phoneNumber)
 - Flat(flatId, addressFlat, availabilityRent, rooms, area, balcony, city, ownerId REF Person)
 - Offer(offerId, price, offerDate, newestOffert, flatId REF Flat)
-- Rent(contractId, dateStart, dateExp, newestContract, tenantId REF Person, flatId REF Flat) 
+- Rent(contractId, dateStart, dateExp, newestContract, tenantId REF Person, flatId REF Flat, offerId REF Offer) 

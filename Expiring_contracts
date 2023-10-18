@@ -1,1 +1,18 @@
+/* The office worker searches for contracts coming to an end 
+to offer the client a rental extension. 
 
+Assumption: An office employee cannot make an offer to rent 
+a particular apartment earlier than 2 months before the rental start date.*/
+
+SELECT Person.firstName, Person.lastName, Person.phoneNumber,
+	Flat.addressFlat, Flat.city, Rent.dateExp
+
+FROM Person
+RIGHT JOIN Flat
+ON Person.personId = Flat.ownerId
+RIGHT JOIN Rent
+ON Rent.flatId = Flat.flatId
+
+WHERE Flat.availabilityRent = 1 
+	  AND (Rent.newestContract = 1)
+	  AND DATEDIFF(DAY, GETDATE(), Rent.dateExp)<60

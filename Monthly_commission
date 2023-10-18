@@ -1,1 +1,20 @@
+/* The office owner calculates a monthly commission X 
+on all contracts for the current month. 
 
+For example: commision X = 0.05 */
+
+SELECT MONTH(GETDATE()) as month, 
+	YEAR(GETDATE()) as year, 
+	SUM(Offer.price) as total_income,
+	0.05*(SUM(Offer.price)) as commission
+
+FROM Person
+INNER JOIN Flat
+ON Person.personId = Flat.ownerId
+INNER JOIN Rent
+ON Rent.flatId = Flat.flatId
+INNER JOIN Offer
+ON Rent.offerId = Offer.offerId
+
+WHERE Rent.dateStart <= GETDATE()
+	AND GETDATE() <= Rent.dateExp

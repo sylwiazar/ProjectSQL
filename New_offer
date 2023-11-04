@@ -1,1 +1,22 @@
+/* If for a given apartment the owner establishes a suitable offer for rent, 
+the offer data are entered in the Offer table, respectively.
 
+Table schema:
+
+    CREATE TABLE Offer (
+      	offerId int IDENTITY (1,1) PRIMARY KEY,
+      	price int NOT NULL CHECK (Price>=1),
+      	offerDate date NOT NULL DEFAULT GETDATE(),
+      	newestOffer bit NOT NULL DEFAULT 1,
+      	flatId int NOT NULL FOREIGN KEY REFERENCES Flat(flatId)
+    	);
+
+*/
+
+UPDATE Offer
+SET newestOffer = 0
+WHERE flatId=1
+
+INSERT INTO Offer (Price, OfferDate, FlatId)
+VALUES
+(3000, '2023-09-26', 1);

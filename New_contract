@@ -1,1 +1,25 @@
+/* If the customer is a tenant and decides to rent the apartment from a given offer, 
+the contract data are entered in the Rent table.
 
+Table schema:
+
+    CREATE TABLE Rent (
+        	contractId int IDENTITY (1,1) PRIMARY KEY,
+        	dateStart date NOT NULL,
+        	dateExp date NOT NULL,
+        	newestContract bit NOT NULL DEFAULT 1,
+        	tenantId int NOT NULL FOREIGN KEY REFERENCES Person(personId),
+        	flatId int NOT NULL FOREIGN KEY REFERENCES Flat(flatId),
+        	offerId int NOT NULL FOREIGN KEY REFERENCES Offer(offerId)
+    	);
+
+*/
+
+UPDATE Rent
+SET newestContract = 0
+WHERE flatId=1 
+
+INSERT INTO Rent (DateStart, DateExp, TenantId, FlatId, offerId)
+VALUES
+('2023-09-26', '2024-09-26', 10, 1, 3)
+;

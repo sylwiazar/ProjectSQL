@@ -1,3 +1,21 @@
-INSERT INTO Flat (addressFlat, rooms, area, balcony, ownerId, city)
+/* If the client is the owner of a rental apartment, 
+the apartment data are entered in the Flat table.
+
+Table schema:
+
+    CREATE TABLE Flat (
+    	flatId int IDENTITY (1,1) PRIMARY KEY,
+    	addressFlat varchar(100) NOT NULL,
+    	availabilityRent bit NOT NULL DEFAULT 1,
+    	rooms tinyint NOT NULL CHECK (Rooms>=1),
+    	area tinyint NOT NULL CHECK (Area>=1),
+    	balcony bit NOT NULL DEFAULT 0,
+    	city varchar(25)
+      ownerId int NOT NULL FOREIGN KEY REFERENCES Person(personId)
+    );
+
+*/
+
+INSERT INTO Flat (addressFlat, rooms, area, balcony, ownerId, city, ownerId)
 VALUES
-('Kwiatowa 3/2', 2, 45, 1, 3, 'Warszawa');
+('Kwiatowa 3/2', 2, 45, 1, 3, 'Warszawa', 5);
